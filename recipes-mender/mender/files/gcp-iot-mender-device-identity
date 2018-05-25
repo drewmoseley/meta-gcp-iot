@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# Script called by Mender agent to collect device identity data.
+#
+# The script should output identity data in <key>=<value> format, one
+# entry per line. Example
+#
+# $ ./mender-device-identity
+# mac=de:ad:ca:fe:00:01
+# cpuid=1112233
+#
+
+set -ue
+
+SCN=/sys/class/net
+min=65535
+arphrd_ether=1
+ifdev=
+
+# find iface with lowest ifindex, skip non ARPHRD_ETHER types (lo, sit ...)
+for dev in $SCN/*; do
+    if [ ! -f "$dev/type" ]; then
+        continue
+    fi
+
+    iftype=$(cat $dev/type)
+    if [ $iftype -ne $arphrd_ether ]; then
+        continue
+    fi
+
+    idx=$(cat $dev/ifindex)
+    if [ $idx -lt $min ]; then
+        min=$idx
+        ifdev=$dev
+    fi
+done
+
+if [ -z "$ifdev" ]; then
+    echo "no suitable interfaces found" >&2
+    exit 1
+else
+    echo "using interface $ifdev" >&2
+    # grab MAC address
+    echo "mac=$(cat $ifdev/address)"
+fi
+
+# Note this may change and should be replaced with something
+# unique and immutable for a given system.
+echo "extra_identity_info=$(cat /etc/machine-id)"

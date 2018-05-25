@@ -1,0 +1,47 @@
+This README file contains information on the contents of the meta-gcp-iot layer.
+
+Please see the corresponding sections below for details.
+
+Dependencies
+============
+
+This layer depends on:
+
+    URI: git://github.com/mendersoftware/meta-mender/meta-mender-core
+    branch: master
+    revision: HEAD
+
+in addition to any additional platform dependencies.  Specifically for
+Raspberry Pi 3 builds you will need:
+
+    URI: git://git.yoctoproject.org/meta-raspberrypi
+    branch: master
+    revision: HEAD
+
+    URI: git://github.com/mendersoftware/meta-mender/meta-mender-raspberrypi
+    branch: master
+    revision: HEAD
+
+Other platforms will vary.
+
+Patches
+=======
+
+Please submit any patches against the meta-gcp-iot layer to the github repository:
+
+Table of Contents
+=================
+
+  I. Adding the meta-gcp-iot layer to your build
+ II. Misc
+
+
+I. Adding the meta-gcp-iot layer to your build
+=================================================
+
+Run 'bitbake-layers add-layer meta-gcp-iot'
+
+II. Misc
+========
+
+This layer contains additions for integrating your Yocto build with the Google Cloud Platform.

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+STATE_CHANGE_ALLOW=0
+STATE_CHANGE_DISALLOW=1
+STATE_CHANGE_RETRY=21
+
+# Change this conditional to an appropriate check
+# to ensure server communication will succeed.
+if /bin/true; then
+    echo "Allowing server communication @ $(date)." >&2
+    exit $STATE_CHANGE_ALLOW
+else
+    echo "Delaying server communication @ $(date)." >&2
+    exit $STATE_CHANGE_RETRY
+fi

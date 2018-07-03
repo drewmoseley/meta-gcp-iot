@@ -18,6 +18,7 @@ IMAGE_INSTALL_append = " \
                      python-pip \
                      python-grpcio-tools \
                      python-cryptography \
+                     python-pyjwt \
 "
 
 ###DISTRO_FEATURES_append += " wifi"

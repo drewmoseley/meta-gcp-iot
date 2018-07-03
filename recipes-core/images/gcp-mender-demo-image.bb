@@ -17,6 +17,7 @@ IMAGE_INSTALL_append = " \
                      python-paho-mqtt \
                      python-pip \
                      python-grpcio-tools \
+                     python-cryptography \
 "
 
 ###DISTRO_FEATURES_append += " wifi"

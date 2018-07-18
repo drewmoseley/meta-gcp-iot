@@ -19,6 +19,7 @@ IMAGE_INSTALL_append = " \
                      python-grpcio-tools \
                      python-cryptography \
                      python-pyjwt \
+                     python-docs-samples-mqtt-example \
 "
 
 ###DISTRO_FEATURES_append += " wifi"

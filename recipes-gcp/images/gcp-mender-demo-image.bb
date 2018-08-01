@@ -20,6 +20,7 @@ IMAGE_INSTALL_append = " \
                      python-cryptography \
                      python-pyjwt \
                      python-docs-samples-mqtt-example \
+                     mender-gcp-delay-server-connection \
 "
 
 ###DISTRO_FEATURES_append += " wifi"

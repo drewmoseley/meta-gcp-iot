@@ -27,3 +27,6 @@ IMAGE_INSTALL_append = " \
 ### IMAGE_INSTALL_append += " \
 ###                      linux-firmware-bcm43430
 ### "
+
+inherit extrausers
+EXTRA_USERS_PARAMS = "usermod -P gcp-mender-2018 root;"
